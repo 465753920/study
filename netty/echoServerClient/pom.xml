@@ -12,6 +12,13 @@
 			<artifactId>netty-all</artifactId>
 			<version>4.1.0.Final</version>
 		</dependency>
+
+		<!-- junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
 	</dependencies>
 
 </project>

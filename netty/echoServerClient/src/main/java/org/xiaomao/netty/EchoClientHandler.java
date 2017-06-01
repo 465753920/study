@@ -61,7 +61,7 @@ public class EchoClientHandler extends ChannelInboundHandlerAdapter {
 		for (int i = 0; i < buf.capacity(); i++) {
 			buf.writeByte((cmd[i]));
 		}
-		ctx.writeAndFlush(buf);
+		ctx.writeAndFlush(cmd);
 	}
 
 	@Override

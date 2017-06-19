@@ -25,12 +25,13 @@ public class CronExample {
 
 		log.info("--------Initializing--------");
 
+		SchedulerFactory sf = new StdSchedulerFactory();
+		Scheduler sched = sf.getScheduler();
+		
 		Date runTime = evenMinuteDate(new Date());
 		JobDetail job = newJob(HelloJob.class).withIdentity("job1", "group1").build();
 		Trigger trigger = newTrigger().withIdentity("trigger1", "group1").withSchedule(cronSchedule("0/5 * * * * ?"))
 				.startAt(runTime).build();
-		SchedulerFactory sf = new StdSchedulerFactory();
-		Scheduler sched = sf.getScheduler();
 		sched.scheduleJob(job, trigger);
 
 		log.info("--------Start--------");

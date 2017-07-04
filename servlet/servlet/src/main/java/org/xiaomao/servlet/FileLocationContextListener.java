@@ -15,6 +15,7 @@ public class FileLocationContextListener implements ServletContextListener {
 		ServletContext ctx = sce.getServletContext();
 		String relativePath = ctx.getInitParameter("tempfile.dir");
 		File file = new File(rootPath + File.separator + relativePath);
+		System.out.println(file.getPath());
 		if (!file.exists())
 			file.mkdirs();
 		System.out.println("File Directory created to be used for storing files");

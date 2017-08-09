@@ -13,13 +13,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestClass {
-	
+
 	private SessionFactory factory;
 
 	@Before
-	public void before(){
+	public void before() {
 		try {
-			Configuration configuration = new Configuration().configure();
+			Configuration configuration = new Configuration().configure().addAnnotatedClass(A.class)
+					.addAnnotatedClass(B.class);
 			StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties());
 			factory = configuration.buildSessionFactory(builder.build());
@@ -30,7 +31,7 @@ public class TestClass {
 	}
 
 	@Test
-	public void test1(){
+	public void test1() {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
@@ -48,6 +49,42 @@ public class TestClass {
 		} finally {
 			session.close();
 		}
+	}
+
+	@Test
+	public void test2() {
+		// Session session = factory.openSession();
+		// Transaction tx = session.beginTransaction();
+		// A a = new A();
+		// a.setId("001");
+		// a.setFkBId("101");
+		// a.setName("a1");
+		// session.save(a);
+		//// session.persist(a);
+		// session.flush();
+		// tx.commit();
+		// session.close();
+
+		Session session = factory.openSession();
+		Transaction tx = session.beginTransaction();
+		B b = new B();
+		b.setId("101");
+		b.setName("b1");
+		session.save(b);
+		// session.persist(b);
+		session.flush();
+		tx.commit();
+		session.close();
+	}
+
+	@Test
+	public void test3() {
+		Session session = factory.openSession();
+		String hql = "from A a left join B b where b.id=a.fkBId";
+		Query query = session.createQuery(hql);
+		List list = query.list();
+		System.out.println(query.list().get(0).toString());
+		session.close();
 	}
 
 }

@@ -3,8 +3,8 @@
  "-//Hibernate/Hibernate Mapping DTD//EN"
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping>
-	<class name="org.xiaomao.hibernate.entity.Event" table="EVENTS">
+<hibernate-mapping package="org.xiaomao.hibernate.entity">
+	<class name="Event" table="EVENTS">
 		<meta attribute="class-description">
 			This class contains the event detail.
 		</meta>
@@ -13,5 +13,9 @@
 		</id>
 		<property name="title" column="TITLE"></property>
 		<property name="date" column="EVENT_DATE" type="timestamp"></property>
+		<set name="persons" table="PERSON_EVENT">
+			<key column="EVENT_ID"></key>
+			<many-to-many column="PERSON_ID" class="Person"></many-to-many>
+		</set>
 	</class>
 </hibernate-mapping>

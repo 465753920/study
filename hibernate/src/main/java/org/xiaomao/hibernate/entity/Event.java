@@ -1,6 +1,7 @@
 package org.xiaomao.hibernate.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 public class Event {
 
@@ -8,6 +9,7 @@ public class Event {
 
 	private String title;
 	private Date date;
+	private Set<Person> persons;
 
 	public Event() {
 	}
@@ -34,6 +36,14 @@ public class Event {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public Set<Person> getPersons() {
+		return persons;
+	}
+
+	public void setPersons(Set<Person> persons) {
+		this.persons = persons;
 	}
 
 }

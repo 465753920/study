@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="org.xiaomao.hibernate.entity.Event" table="EVENTS">
+		<meta attribute="class-description">
+			This class contains the event detail.
+		</meta>
+		<id name="id" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="title" column="TITLE"></property>
+		<property name="date" column="EVENT_DATE" type="timestamp"></property>
+	</class>
+</hibernate-mapping>

@@ -13,7 +13,7 @@
 		</id>
 		<property name="title" column="TITLE"></property>
 		<property name="date" column="EVENT_DATE" type="timestamp"></property>
-		<set name="persons" table="PERSON_EVENT">
+		<set name="participants" table="PERSON_EVENT">
 			<key column="EVENT_ID"></key>
 			<many-to-many column="PERSON_ID" class="Person"></many-to-many>
 		</set>

@@ -2,6 +2,8 @@ package org.xiaomao.hibernate.managers;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.junit.Test;
@@ -27,34 +29,26 @@ public class EventManager {
 	@Test
 	public void list() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-		List events = session.createQuery("from Event").list();
-		session.getTransaction().commit();
+		List events = session.createQuery(" from Event ").list();
 
 		for (int i = 0; i < events.size(); i++) {
 			Event theEvent = (Event) events.get(i);
-			System.out.println("Event: " + theEvent.getTitle() + " Time: " + theEvent.getDate());
+			System.out.println("活动：" + theEvent.getTitle() + "，时间： " + theEvent.getDate());
+
+			Set<Person> persons = theEvent.getParticipants();
+			for (Person p : persons) {
+				System.out.println(p.getFirstname() + p.getLastname());
+			}
 		}
 	}
 
 	@Test
-	public void addPersonToEvent() {
+	public void list2() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-
-		Event anEvent = new Event();
-		anEvent.setDate(new Date());
-		anEvent.setTitle("t1");
-
-		Person aPerson = new Person();
-		aPerson.setAge(5);
-		aPerson.setFirstname("f1");
-		aPerson.setLastname("l1");
-		aPerson.getEvents().add(anEvent);
-
-		session.save(aPerson);
-
-		session.getTransaction().commit();
+		List<Map<String, Object>> result = session.createQuery(
+				" select a.title as title, b.firstname as firstname, b.lastname as lastname FROM Event a join a.participants b ")
+				.list();
+		System.out.println(result.get(0).get("firstname"));
 	}
 
 }

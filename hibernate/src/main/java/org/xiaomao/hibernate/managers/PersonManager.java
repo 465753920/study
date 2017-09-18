@@ -3,6 +3,7 @@ package org.xiaomao.hibernate.managers;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Session;
@@ -25,27 +26,40 @@ public class PersonManager {
 		session.save(p);
 
 		session.getTransaction().commit();
+
+		session.close();
 	}
 
 	@Test
 	public void list() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		session.beginTransaction();
+
 		List<Person> persons = session.createQuery(" FROM Person ").list();
 
 		for (Person p : persons) {
 			System.out.println("Ãû×Ö£º" + p.getFirstname() + p.getLastname() + "£¬ÄêÁä£º" + p.getAge());
-
-			Set<Event> events = p.getEvents();
-			for (Event e : events) {
-				System.out.println(e.getTitle());
-			}
+			//
+			// Set<Event> events = p.getEvents();
+			// for (Event e : events) {
+			// System.out.println(e.getTitle());
+			// }
 		}
+
+		session.getTransaction().commit();
 	}
-	
+
 	@Test
 	public void list2() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.createQuery(" FROM Person a join a.events ").list();
+		List<Map<String, Object>> list = session.createQuery(
+				" select new map(a.firstname as firstname, a.lastname as lastname, a.age as age, b.title as title) FROM Person a join a.events b ")
+				.list();
+		for (Map<String, Object> item : list) {
+			System.out.println((String) item.get("firstname") + (String) item.get("lastname") + ", age "
+					+ (Integer) item.get("age") + " ,title " + (String) item.get("title") + ".");
+		}
 	}
 
 	@Test

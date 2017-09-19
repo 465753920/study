@@ -30,8 +30,6 @@
 		<!-- <property name="hbm2ddl.auto">create</property> -->
 
 		<!-- The mapping information of entities -->
-		<!-- <mapping resource="org/xiaomao/hibernate/Employee.hbm.xml"/> -->
-		<!-- <mapping resource="org/xiaomao/hibernate/Example.hbm.xml"/> -->
 		<mapping resource="org/xiaomao/hibernate/entity/Event.hbm.xml" />
 		<mapping resource="org/xiaomao/hibernate/entity/Person.hbm.xml" />
 		<!-- <mapping resource="org/xiaomao/hibernate/entity/Group.hbm.xml"/> -->

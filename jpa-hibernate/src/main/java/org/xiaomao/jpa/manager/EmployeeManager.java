@@ -23,7 +23,6 @@ public class EmployeeManager {
 		entitymanager.getTransaction().begin();
 
 		Employee employee = new Employee();
-		employee.setEid(1202);
 		employee.setEname("ShenQiuS");
 		employee.setSalary(60000);
 		employee.setDeg("Software Engineer");

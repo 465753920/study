@@ -12,9 +12,9 @@ public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int eid;
+	private Integer eid;
 	private String ename;
-	private double salary;
+	private Double salary;
 	private String deg;
 
 	public Employee(int eid, String ename, double salary, String deg) {
@@ -29,11 +29,11 @@ public class Employee {
 		super();
 	}
 
-	public int getEid() {
+	public Integer getEid() {
 		return eid;
 	}
 
-	public void setEid(int eid) {
+	public void setEid(Integer eid) {
 		this.eid = eid;
 	}
 
@@ -45,11 +45,11 @@ public class Employee {
 		this.ename = ename;
 	}
 
-	public double getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
 
-	public void setSalary(double salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
 

@@ -58,6 +58,11 @@ public class EmployeeManager {
 		emfactory.close();
 	}
 
+	/**
+	 * 验证UPPER()函数
+	 * 
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public List<String> upper() {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("JPA_Demo_1");
@@ -73,6 +78,11 @@ public class EmployeeManager {
 		return names;
 	}
 
+	/**
+	 * 验证MAX()函数
+	 * 
+	 * @return
+	 */
 	public Double max() {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("JPA_Demo_1");
 
@@ -87,6 +97,13 @@ public class EmployeeManager {
 		return maxSalary;
 	}
 
+	/**
+	 * 区间查询
+	 * 
+	 * @param min
+	 * @param max
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Employee> between(Double min, Double max) {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("JPA_Demo_1");
@@ -102,6 +119,12 @@ public class EmployeeManager {
 		return result;
 	}
 
+	/**
+	 * 模糊查询
+	 * 
+	 * @param name
+	 * @return
+	 */
 	public List<Employee> like(String name) {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("JPA_Demo_1");
 
@@ -115,7 +138,12 @@ public class EmployeeManager {
 
 		return result;
 	}
-	
+
+	/**
+	 * 排序
+	 * 
+	 * @return
+	 */
 	public List<Employee> order() {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("JPA_Demo_1");
 
@@ -128,6 +156,17 @@ public class EmployeeManager {
 		emfactory.close();
 
 		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Employee> namedQueryById(Integer id) {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("JPA_Demo_1");
+
+		EntityManager em = emfactory.createEntityManager();
+
+		Query query = em.createNamedQuery("find employee by id");
+		query.setParameter("id", id);
+		return query.getResultList();
 	}
 
 }

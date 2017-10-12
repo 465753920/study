@@ -75,5 +75,14 @@ public class EmployeeManagerTest {
 			System.out.println(employee);
 		}
 	}
+	
+	@Test
+	public void namedQuery() {
+		List<Employee> employees = em.namedQueryById(1205);
+
+		for (Employee employee : employees) {
+			System.out.println(employee);
+		}
+	}
 
 }

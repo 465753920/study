@@ -11,18 +11,13 @@ import org.xiaomao.jpa.entity.Employee;
 
 public class EmployeeManager {
 
-	public void createEmployee() {
+	public void createEmployee(Employee e) {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("JPA_Demo_1");
 
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
 
-		Employee employee = new Employee();
-		employee.setEname("ShenQiuS");
-		employee.setSalary(60000.0);
-		employee.setDeg("Software Engineer");
-
-		entitymanager.persist(employee);
+		entitymanager.persist(e);
 		entitymanager.getTransaction().commit();
 
 		entitymanager.close();
@@ -110,7 +105,9 @@ public class EmployeeManager {
 
 		EntityManager em = emfactory.createEntityManager();
 
-		Query query = em.createQuery("Select e from Employee e where e.salary Between " + min + " and " + max);
+		Query query = em.createQuery("Select e from Employee e where e.salary Between :min and :max");
+		query.setParameter("min", min);
+		query.setParameter("max", max);
 		List<Employee> result = query.getResultList();
 
 		em.close();
@@ -130,7 +127,8 @@ public class EmployeeManager {
 
 		EntityManager em = emfactory.createEntityManager();
 
-		Query query = em.createQuery("Select e from Employee e where e.ename like '" + name + "%'");
+		Query query = em.createQuery("Select e from Employee e where e.ename like :name%");
+		query.setParameter("name", name);
 		List<Employee> result = query.getResultList();
 
 		em.close();

@@ -17,7 +17,12 @@ public class EmployeeManagerTest {
 
 	@Test
 	public void createEmployee() {
-		em.createEmployee();
+		Employee employee = new Employee();
+		employee.setEname("XiaoMao");
+		employee.setSalary(100000.0);
+		employee.setDeg("Software Engineer");
+
+		em.createEmployee(employee);
 	}
 
 	@Test
@@ -51,7 +56,7 @@ public class EmployeeManagerTest {
 
 	@Test
 	public void betweenSalary() {
-		List<Employee> employees = em.between(30000.0, 50000.0);
+		List<Employee> employees = em.between(30000.0, 80000.0);
 
 		for (Employee employee : employees) {
 			System.out.println(employee);
@@ -75,7 +80,7 @@ public class EmployeeManagerTest {
 			System.out.println(employee);
 		}
 	}
-	
+
 	@Test
 	public void namedQuery() {
 		List<Employee> employees = em.namedQueryById(1205);

@@ -8,7 +8,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="Employee")
 @NamedQuery(query = "select e from Employee e where e.eid = :id", name = "find employee by id")
 public class Employee {
 

@@ -20,7 +20,7 @@ public class StaffManagerTest {
 		TeachingStaff ts = new TeachingStaff("小李", "本科", "数学");
 		sm.createStaff(ts);
 
-		NonTeachingStaff ns = new NonTeachingStaff("小红", "经理");
+		NonTeachingStaff ns = new NonTeachingStaff("小小", "经理");
 		sm.createStaff(ns);
 
 		Staff s = new Staff("沈秋盛");

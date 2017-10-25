@@ -1,12 +1,15 @@
 package org.xiaomao.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,9 +59,36 @@ public class HelloWorld extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		Enumeration<String> attributeNames = request.getAttributeNames();
-		while(attributeNames.hasMoreElements()){
+		while (attributeNames.hasMoreElements()) {
 			System.out.println(attributeNames.nextElement());
 		}
+
+		Enumeration<String> paramNames = request.getParameterNames();
+		while (paramNames.hasMoreElements()) {
+			System.out.println(paramNames.nextElement());
+		}
+
+		try {
+			ServletInputStream in = request.getInputStream();
+			byte[] b = new byte[512];
+			while (in.read(b) != -1) {
+				System.out.println(new String(b));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// try {
+		// ServletInputStream in = request.getInputStream();
+		// InputStreamReader reader = new InputStreamReader(in);
+		// BufferedReader bufferedReader = new BufferedReader(reader);
+		// while (bufferedReader.ready()) {
+		// String line = bufferedReader.readLine();
+		// System.out.println(line);
+		// }
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	@Override

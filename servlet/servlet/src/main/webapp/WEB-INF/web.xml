@@ -31,8 +31,8 @@
 		</init-param>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>HelloForm</servlet-name>
-		<url-pattern>/HelloForm</url-pattern>
+		<servlet-name>HelloWorld</servlet-name>
+		<url-pattern>/HelloWorld</url-pattern>
 	</servlet-mapping>
 	<!-- HelloForm -->
 	<servlet>
@@ -40,8 +40,8 @@
 		<servlet-class>org.xiaomao.servlet.HelloForm</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>HelloWorld</servlet-name>
-		<url-pattern>/HelloWorld</url-pattern>
+		<servlet-name>HelloForm</servlet-name>
+		<url-pattern>/HelloForm</url-pattern>
 	</servlet-mapping>
 	<!-- Checkbox -->
 	<servlet>

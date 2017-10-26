@@ -7,6 +7,7 @@
 
 	<properties>
 		<httpclient.version>4.5.3</httpclient.version>
+		<springmvc.version>4.3.12.RELEASE</springmvc.version>
 	</properties>
 
 	<dependencies>
@@ -15,6 +16,12 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>${httpclient.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springmvc.version}</version>
 		</dependency>
 	</dependencies>
 

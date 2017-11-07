@@ -8,6 +8,7 @@
 	<properties>
 		<httpclient.version>4.5.3</httpclient.version>
 		<springmvc.version>4.3.12.RELEASE</springmvc.version>
+		<jdk.version>1.8</jdk.version>
 	</properties>
 
 	<dependencies>
@@ -24,5 +25,19 @@
 			<version>${springmvc.version}</version>
 		</dependency>
 	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

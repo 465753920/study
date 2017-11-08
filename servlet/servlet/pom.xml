@@ -13,6 +13,7 @@
 		<jsp-api.version>2.1</jsp-api.version>
 		<httpclient.version>4.5.3</httpclient.version>
 		<springframework.version>4.3.12.RELEASE</springframework.version>
+		<junit.version>4.11</junit.version>
 	</properties>
 
 	<dependencies>
@@ -45,6 +46,13 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>${httpclient.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

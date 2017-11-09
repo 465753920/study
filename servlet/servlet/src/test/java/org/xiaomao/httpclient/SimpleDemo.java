@@ -45,11 +45,16 @@ public class SimpleDemo {
 		}
 	}
 
+	@Test
+	public void testGet2() {
+	}
+
+	@Test
 	public void testPost() {
 
 		try {
 			CloseableHttpClient httpClient = HttpClients.createDefault();
-			HttpPost httpPost = new HttpPost("url");
+			HttpPost httpPost = new HttpPost("http://localhost:8080/servlet/httphelloworld");
 
 			List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 			nvps.add(new BasicNameValuePair("username", "vip"));

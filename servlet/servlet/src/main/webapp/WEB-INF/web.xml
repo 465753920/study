@@ -106,4 +106,13 @@
 		<servlet-name>Searcher</servlet-name>
 		<url-pattern>/searcher</url-pattern>
 	</servlet-mapping>
+	<!-- HttpHelloWorld -->
+	<servlet>
+		<servlet-name>HttpHelloWorld</servlet-name>
+		<servlet-class>org.xiaomao.servlet.HttpHelloWorld</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HttpHelloWorld</servlet-name>
+		<url-pattern>/httphelloworld</url-pattern>
+	</servlet-mapping>
 </web-app>

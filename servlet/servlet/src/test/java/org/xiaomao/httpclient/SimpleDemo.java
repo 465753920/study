@@ -46,10 +46,6 @@ public class SimpleDemo {
 	}
 
 	@Test
-	public void testGet2() {
-	}
-
-	@Test
 	public void testPost() {
 
 		try {

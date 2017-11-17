@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.xiaomao</groupId>
+	<artifactId>ehcache</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<jdk.version>1.8</jdk.version>
+		<encode.charset>UTF-8</encode.charset>
+		<ehcache-core.version>2.6.11</ehcache-core.version>
+	</properties>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache-core -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>${ehcache-core.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>ehcache-test</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>${encode.charset}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -15,7 +15,7 @@ public class HibernateUtil {
 					.applySettings(configuration.getProperties());
 			return configuration.buildSessionFactory(builder.build());
 		} catch (Throwable ex) {
-			System.err.println("´´½¨SessionFactoryÊ§°Ü¡£" + ex);
+			System.err.println("åˆ›å»ºSessionFactoryå¤±è´¥ã€‚" + ex);
 			throw new ExceptionInInitializerError(ex);
 		}
 

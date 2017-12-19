@@ -39,7 +39,7 @@ public class PersonManager {
 		List<Person> persons = session.createQuery(" FROM Person ").list();
 
 		for (Person p : persons) {
-			System.out.println("Ãû×Ö£º" + p.getFirstname() + p.getLastname() + "£¬ÄêÁä£º" + p.getAge());
+			System.out.println("åå­—ï¼š" + p.getFirstname() + p.getLastname() + "ï¼Œå¹´é¾„ï¼š" + p.getAge());
 			//
 			// Set<Event> events = p.getEvents();
 			// for (Event e : events) {

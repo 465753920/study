@@ -33,7 +33,7 @@ public class EventManager {
 
 		for (int i = 0; i < events.size(); i++) {
 			Event theEvent = (Event) events.get(i);
-			System.out.println("»î¶¯£º" + theEvent.getTitle() + "£¬Ê±¼ä£º " + theEvent.getDate());
+			System.out.println("æ´»åŠ¨ï¼š" + theEvent.getTitle() + "ï¼Œæ—¶é—´ï¼š " + theEvent.getDate());
 
 			Set<Person> persons = theEvent.getParticipants();
 			for (Person p : persons) {

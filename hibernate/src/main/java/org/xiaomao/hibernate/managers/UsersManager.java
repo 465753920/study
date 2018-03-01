@@ -25,6 +25,7 @@ public class UsersManager {
 		session.beginTransaction();
 
 		session.save(user);
+		session.save(group);
 
 		session.getTransaction().commit();
 		session.close();

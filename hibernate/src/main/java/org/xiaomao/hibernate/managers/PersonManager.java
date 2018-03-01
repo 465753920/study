@@ -40,11 +40,11 @@ public class PersonManager {
 
 		for (Person p : persons) {
 			System.out.println("名字：" + p.getFirstname() + p.getLastname() + "，年龄：" + p.getAge());
-			//
-			// Set<Event> events = p.getEvents();
-			// for (Event e : events) {
-			// System.out.println(e.getTitle());
-			// }
+
+			Set<Event> events = p.getEvents();
+			for (Event e : events) {
+				System.out.println(e.getTitle());
+			}
 		}
 
 		session.getTransaction().commit();
@@ -69,15 +69,16 @@ public class PersonManager {
 
 		Event anEvent = new Event();
 		anEvent.setDate(new Date());
-		anEvent.setTitle("t2");
+		anEvent.setTitle("title2");
 
 		Set<Event> events = new HashSet<Event>();
 		events.add(anEvent);
 
 		Person aPerson = new Person();
-		aPerson.setAge(5);
+		aPerson.setAge(2);
 		aPerson.setFirstname("f2");
 		aPerson.setLastname("l2");
+		aPerson.setId(2L);
 		aPerson.setEvents(events);
 
 		session.save(aPerson);

@@ -1,13 +1,30 @@
 package org.xiaomao.hibernate.entity;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "T_PERSONS")
+@DynamicUpdate
+@DynamicInsert
 public class Person {
 
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Column(name = "AGE")
 	private int age;
+	@Column(name = "FIRST_NAME")
 	private String firstname;
+	@Column(name = "LAST_NAME")
 	private String lastname;
+	@ManyToMany
+	@JoinTable(name = "PERSON_EVENT",
+			joinColumns = {@JoinColumn(name = "PERSON_ID")},
+			inverseJoinColumns = {@JoinColumn(name = "EVENT_ID")})
 	private Set<Event> events;
 
 	public Long getId() {

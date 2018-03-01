@@ -1,11 +1,10 @@
 package org.xiaomao.hibernate.managers;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
+import org.apache.poi.ss.formula.functions.Even;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.xiaomao.hibernate.entity.Event;
 import org.xiaomao.hibernate.entity.Person;
@@ -49,6 +48,30 @@ public class EventManager {
 				" select a.title as title, b.firstname as firstname, b.lastname as lastname FROM Event a join a.participants b ")
 				.list();
 		System.out.println(result.get(0).get("firstname"));
+	}
+
+	@Test
+	public void addPersonToEvent() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+
+		Person person = new Person();
+		person.setAge(1);
+		person.setFirstname("f1");
+		person.setLastname("l1");
+
+		Set<Person> participants = new HashSet<Person>();
+		participants.add(person);
+
+		Event event = new Event();
+		event.setDate(new Date());
+		event.setTitle("title2");
+		event.setParticipants(participants);
+		event.setParticipants(participants);
+		session.save(event);
+
+		session.getTransaction().commit();
+		session.close();
 	}
 
 }

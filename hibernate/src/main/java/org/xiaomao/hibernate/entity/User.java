@@ -1,25 +1,41 @@
 package org.xiaomao.hibernate.entity;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "T_USER")
+@DynamicInsert
+@DynamicUpdate
 public class User {
+	@Id
+	@GeneratedValue
 	private long id;
+	@Column(name = "USERNAME")
 	private String username;
+	@Column(name = "PASSWORD")
 	private String password;
+	@Column(name = "EMAIL")
 	private String email;
-
-	private Set<Group> groups = new HashSet<Group>();
+	@ManyToOne
+	@JoinColumn(name = "GROUP_ID")
+	private Group group;
 
 	public User(String username, String password, String email) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
 	}
-	
-	public void addGroup(Group group) {
-		this.groups.add(group);
-	}
+
+	public User() {}
+
+	public Group getGroup() { return group; }
+
+	public void setGroup(Group group) { this.group = group; }
 
 	public long getId() {
 		return id;
@@ -41,9 +57,7 @@ public class User {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	public void setPassword(String password) { this.password = password; }
 
 	public String getEmail() {
 		return email;
@@ -51,14 +65,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Set<Group> getGroups() {
-		return groups;
-	}
-
-	public void setGroups(Set<Group> groups) {
-		this.groups = groups;
 	}
 
 }

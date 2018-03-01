@@ -11,22 +11,36 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 
 public class Main {
+	
+//	HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
+//	HttpClient httpClient = httpClientBuilder.build();
+//	HttpResponse response = httpClient.execute(request);
+//	
+//	HttpPost httpPost = new HttpPost("http://192.168.93.23:8080/socialfile-server/api/monitor/monitorpics");
+//
+//	httpPost.setHeader("Content-Type", "application/json");
+//	
+//	StringEntity entity = new StringEntity(
+//			"{\"uploadTime\" : \"2018-01-16\",\"signboardNo\" : \"16091013\",\"pageNo\" : 0}", "UTF-8");
+//	httpPost.setEntity(entity);
 
 	public static void main(String[] args) {
 		HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
 		HttpClient client = httpClientBuilder.build();
-		HttpPost post = new HttpPost("http://localhost:81/soms-data/api/medicine/query");
+		HttpPost post = new HttpPost("http://192.168.93.23:8080/socialfile-server/api/monitor/monitorpics");
 		try {
 			post.setHeader("soms-access-token", "eastcom");
 			post.setHeader("Content-Type", "application/json");
 			
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-			nameValuePairs.add(new BasicNameValuePair("barCode", "6920032881344"));
-			post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			StringEntity entity = new StringEntity(
+					"{\"uploadTime\" : \"2018-01-16\",\"signboardNo\" : \"16091013\",\"pageNo\" : 0}", "UTF-8");
+			
+			post.setEntity(entity);
 
 			HttpResponse response = client.execute(post);
 			BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));

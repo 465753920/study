@@ -27,15 +27,15 @@
         <property name="hibernate.current_session_context_class">thread</property>
 
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">update</property>
+        <!--<property name="hbm2ddl.auto">update</property>-->
 
         <!-- The mapping information of entities -->
         <!-- 		<mapping resource="org/xiaomao/hibernate/entity/Event.hbm.xml" /> -->
         <!-- 		<mapping resource="org/xiaomao/hibernate/entity/Person.hbm.xml" /> -->
         <!-- <mapping resource="org/xiaomao/hibernate/entity/Group.hbm.xml"/> -->
         <!-- <mapping resource="org/xiaomao/hibernate/entity/User.hbm.xml"/> -->
-        <!--<mapping class="org.xiaomao.hibernate.entity.Person"/>-->
-        <!--<mapping class="org.xiaomao.hibernate.entity.Event"/>-->
+        <mapping class="org.xiaomao.hibernate.entity.Person"/>
+        <mapping class="org.xiaomao.hibernate.entity.Event"/>
         <mapping class="org.xiaomao.hibernate.entity.User"/>
         <mapping class="org.xiaomao.hibernate.entity.Group"/>
 

@@ -17,7 +17,7 @@ public class Group {
 	private long id;
 	@Column(name = "NAME")
 	private String name;
-	@OneToMany(mappedBy = "group")
+	@OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
 	private Set<User> users = new HashSet<User>();
 
 	public Group() {

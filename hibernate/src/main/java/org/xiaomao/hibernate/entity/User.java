@@ -4,8 +4,6 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "T_USER")
@@ -21,7 +19,7 @@ public class User {
 	private String password;
 	@Column(name = "EMAIL")
 	private String email;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "GROUP_ID")
 	private Group group;
 

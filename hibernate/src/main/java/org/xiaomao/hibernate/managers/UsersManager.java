@@ -25,9 +25,20 @@ public class UsersManager {
 		session.beginTransaction();
 
 		session.save(user);
-		session.save(group);
+//		session.save(group);
 
 		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Test
+	public void list() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		User user = (User) session.get(User.class, 3L);
+		System.out.println(user.getUsername());
+		System.out.println(user.getGroup().getName());
+
 		session.close();
 	}
 

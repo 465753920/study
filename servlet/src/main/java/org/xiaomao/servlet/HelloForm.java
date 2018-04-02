@@ -1,5 +1,7 @@
 package org.xiaomao.servlet;
 
+import org.xiaomao.hibernate.entity.Event;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 

@@ -11,9 +11,9 @@
 	</welcome-file-list>
 
 	<context-param>
-		<description>Temp file direction</description>
 		<param-name>tempfile.dir</param-name>
 		<param-value>temp</param-value>
+		<description>Temp file direction</description>
 	</context-param>
 
 	<!-- Servlets and Mappings -->

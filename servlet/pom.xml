@@ -9,8 +9,6 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <servlet-api.version>2.5</servlet-api.version>
-        <jsp-api.version>2.1</jsp-api.version>
         <httpclient.version>4.5.3</httpclient.version>
         <springframework.version>4.3.12.RELEASE</springframework.version>
         <junit.version>4.11</junit.version>
@@ -29,6 +27,20 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.1</version>
+            <scope>provided</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
         <dependency>

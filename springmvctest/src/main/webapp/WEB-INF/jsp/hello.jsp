@@ -13,7 +13,7 @@ ${message}
 <%! int i = 0;%>
 <%--Scriptlet--%>
 <%
-    out.println("您的IP地址是：" + request.getRemoteAddr());
+    out.println("你的IP地址是：" + request.getRemoteAddr());
     while (i < 10) {
         out.println(i++);
     }

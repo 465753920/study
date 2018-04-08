@@ -52,13 +52,6 @@ public class MainController {
         TestBean bean = new TestBean();
         bean.setMessage("我是abc");
         servletContext.setAttribute("abc", bean);
-        try {
-            PrintWriter out = response.getWriter();
-            out.write("你好");
-            out.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return "main";
     }
 }

@@ -11,6 +11,10 @@
         <param-value>/WEB-INF/HelloWeb-servlet.xml</param-value>
     </context-param>
 
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
+
     <listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener
@@ -25,7 +29,7 @@
         <filter-name>LogFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    
+
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>org.xiaomao.filter.AuthFilter</filter-class>

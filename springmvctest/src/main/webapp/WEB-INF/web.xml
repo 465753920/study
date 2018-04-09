@@ -8,12 +8,16 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/HelloWeb-servlet.xml</param-value>
+        <param-value>/WEB-INF/SpringMVC-servlet.xml</param-value>
     </context-param>
 
     <session-config>
         <session-timeout>1</session-timeout>
     </session-config>
+
+    <listener>
+        <listener-class>org.xiaomao.listener.MyServletContextListener</listener-class>
+    </listener>
 
     <listener>
         <listener-class>
@@ -39,16 +43,29 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!--SrpingMCV DispatcherServlet-->
     <servlet>
-        <servlet-name>HelloWeb</servlet-name>
+        <servlet-name>SpringMVC</servlet-name>
         <servlet-class>
             org.springframework.web.servlet.DispatcherServlet
         </servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>HelloWeb</servlet-name>
+        <servlet-name>SpringMVC</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!--HelloWorld Servlet-->
+    <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>
+            org.xiaomao.controller.HelloWorldServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/helloworld</url-pattern>
     </servlet-mapping>
 
 </web-app>

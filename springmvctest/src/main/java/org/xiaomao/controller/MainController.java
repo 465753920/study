@@ -9,11 +9,10 @@ import org.xiaomao.entity.TestBean;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 @Controller
 public class MainController {
+
     @RequestMapping(path = "/clock", method = RequestMethod.GET)
     public String printHello(HttpServletRequest request, HttpServletResponse response) {
         return "clock";

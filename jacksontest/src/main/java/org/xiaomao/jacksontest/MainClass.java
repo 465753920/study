@@ -28,8 +28,8 @@ public class MainClass {
 	public static void main(String[] args) {
 		MainClass mainClass = new MainClass();
 
-		//mainClass.objectMapperTest();
-		mainClass.treeModelTest();
+		mainClass.objectMapperTest();
+//		mainClass.treeModelTest();
 	}
 
 	public void objectMapperTest() {

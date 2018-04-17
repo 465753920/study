@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.cfg.MapperConfig;
 import com.fasterxml.jackson.databind.introspect.AnnotatedField;
 import com.fasterxml.jackson.databind.introspect.AnnotatedMethod;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.xiaomao.jacksontest.entity.Album;
 import org.xiaomao.jacksontest.entity.Artist;
 
@@ -21,6 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainClass {
+
+	private JsonNode album;
+
 	public static void main(String[] args) {
 		MainClass mainClass = new MainClass();
 
@@ -77,7 +81,6 @@ public class MainClass {
 	}
 
 	public void treeModelTest() {
-		JsonNodeFactory factory = new JsonNodeFactory(false);
 
 		JsonFactory jsonFactory = new JsonFactory();
 		JsonGenerator generator = null;
@@ -88,7 +91,9 @@ public class MainClass {
 		}
 		ObjectMapper mapper = new ObjectMapper();
 
-		JsonNode album = factory.objectNode();
+		ObjectNode album = JsonNodeFactory.instance.objectNode();
+		album.put("Album-Title","Kind Of Blue");
+
 		try {
 			mapper.writeTree(generator, album);
 		} catch (IOException e) {

@@ -1,8 +1,10 @@
 package org.xiaomao.jacksontest;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -19,6 +21,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainClass {
@@ -28,8 +31,13 @@ public class MainClass {
 	public static void main(String[] args) {
 		MainClass mainClass = new MainClass();
 
-		mainClass.objectMapperTest();
+//		mainClass.objectMapperTest();
 //		mainClass.treeModelTest();
+		try {
+			mainClass.streamTest();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void objectMapperTest() {
@@ -92,13 +100,33 @@ public class MainClass {
 		ObjectMapper mapper = new ObjectMapper();
 
 		ObjectNode album = JsonNodeFactory.instance.objectNode();
-		album.put("Album-Title","Kind Of Blue");
+		album.put("Album-Title", "Kind Of Blue");
 
 		try {
 			mapper.writeTree(generator, album);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void streamTest() throws IOException {
+		JsonFactory factory = new JsonFactory();
+		JsonGenerator generator = factory.createGenerator(System.out, JsonEncoding.UTF8);
+		generator.setPrettyPrinter(new DefaultPrettyPrinter());
+
+		generator.writeStartObject();
+		generator.writeStringField("name", "shenqius");
+		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy MM dd");
+		generator.writeStringField("birthDate", outputFormat.format(new Date("1993/01/17")));
+		generator.writeNumberField("age", 25);
+		generator.writeStringField("homeTown", "饶平");
+		generator.writeArrayFieldStart("awardWon");
+		generator.writeString("格莱美");
+		generator.writeString("金曲奖");
+		generator.writeEndArray();
+
+		generator.flush();
+		generator.close();
 	}
 }
 

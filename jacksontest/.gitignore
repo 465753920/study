@@ -27,3 +27,4 @@ nbdist/
 ### other ###
 mvnw
 *.cmd
+*.json

@@ -117,5 +117,27 @@ public class Main {
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
+
+		//get public constructors and instantiate object
+		try {
+			System.out.println("--------get public constructors--------");
+			Constructor<?> constructor = Class.forName("org.xiaomao.java_study.reflection.ConcreteClass").getConstructor(int.class);
+			System.out.println(constructor.getName() + " parameterTypes: " + Arrays.toString(constructor.getParameterTypes()));
+
+			System.out.println("--------instantiation--------");
+			ConcreteClass myObj = (ConcreteClass) constructor.newInstance(10);
+			Method myObjMethod = myObj.getClass().getMethod("method1", null);
+			myObjMethod.invoke(myObj, null);
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
 	}
 }

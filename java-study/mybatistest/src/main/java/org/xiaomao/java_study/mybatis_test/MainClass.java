@@ -23,7 +23,7 @@ public class MainClass {
 		//Insert student data
 		session.insert("Student.insert", student);
 		System.out.println("record inserted successfully");
-		session.commit(); 
+		session.commit();
 		session.close();
 	}
 }

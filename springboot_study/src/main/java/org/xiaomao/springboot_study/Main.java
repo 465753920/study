@@ -5,8 +5,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Config.class);
-		UseFunctionService useFunctionService = ctx.getBean(UseFunctionService.class);
-		System.out.println(useFunctionService.sayHello("Shen QiuS"));
+		DemoMethodService demoMethodService = ctx.getBean(DemoMethodService.class);
+		demoMethodService.add();
+		DemoAnnotationService demoAnnotationService = ctx.getBean(DemoAnnotationService.class);
+		demoAnnotationService.add();
 		ctx.close();
 	}
 }
